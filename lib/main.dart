@@ -1,4 +1,5 @@
 
+import 'package:asl/about/about.dart';
 import 'package:asl/home/views.dart';
 import 'package:asl/homeFinder/views.dart';
 import 'package:asl/lobby/views.dart';
@@ -35,6 +36,8 @@ class MyApp extends StatelessWidget {
         // GetPage(name: "/register", page:()=>SignUp()),
         GetPage(name: "/home", page:()=>Home()),
          GetPage(name: "/finder", page:()=>Finder()),
+         GetPage(name: "/about", page:()=>About()),
+         
           // GetPage(name: "/qrprofile", page:()=>QRProfile()),
           //  GetPage(name: "/qrprofile", page:()=>QRProfile()),
           //   GetPage(name: "/homeInstitution", page:()=>Institution()),

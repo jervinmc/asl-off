@@ -21,24 +21,24 @@ class _LobbyState extends State<Lobby> {
         child: Column(
           mainAxisAlignment:MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(top: 15),
-            width: 250,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color(0xffef5777)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ))),
-              child: const Text('Filipino'),
-              onPressed: () {
-                Get.toNamed('/video');
-                // Login();
-              },
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.only(top: 15),
+          //   width: 250,
+          //   child: ElevatedButton(
+          //     style: ButtonStyle(
+          //         backgroundColor:
+          //             MaterialStateProperty.all<Color>(const Color(0xffef5777)),
+          //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          //             RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(18.0),
+          //         ))),
+          //     child: const Text('Filipino'),
+          //     onPressed: () {
+          //       Get.toNamed('/video');
+          //       // Login();
+          //     },
+          //   ),
+          // ),
           Container(
             padding: EdgeInsets.only(top: 15),
             width: 250,
@@ -57,24 +57,24 @@ class _LobbyState extends State<Lobby> {
               },
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(top: 15),
-            width: 250,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Color(0xffef5777)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ))),
-              child: Text('Japanese'),
-              onPressed: () {
-                Get.toNamed('/video');
-                // Login();
-              },
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.only(top: 15),
+          //   width: 250,
+          //   child: ElevatedButton(
+          //     style: ButtonStyle(
+          //         backgroundColor:
+          //             MaterialStateProperty.all<Color>(Color(0xffef5777)),
+          //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          //             RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(18.0),
+          //         ))),
+          //     child: Text('Japanese'),
+          //     onPressed: () {
+          //       Get.toNamed('/video');
+          //       // Login();
+          //     },
+          //   ),
+          // ),
         ],
       ),
       )

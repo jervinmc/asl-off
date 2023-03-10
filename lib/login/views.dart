@@ -119,70 +119,70 @@ class _LoginState extends State<Login> {
                     "assets/logo_login.jpg",
                     height: 200,
                   ),
-                  Container(
-                      padding: EdgeInsets.only(top: 20),
-                      child: TextField(
-                        controller: _email,
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(8.0),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 1.5),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Color(0xff222f3e), width: 5.0),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            filled: true,
-                            hintStyle: TextStyle(color: Colors.grey[800]),
-                            hintText: "Email",
-                            fillColor: Colors.white70),
-                      )),
-                  Container(
-                      height: 100,
-                      padding: EdgeInsets.only(top: 10),
-                      child: TextField(
-                        obscureText: isReveal,
-                        controller: _password,
-                        decoration: InputDecoration(
-                            suffixIcon: !isReveal
-                                ? InkWell(
-                                    child: Icon(Icons.remove_red_eye),
-                                    onTap: () => {
-                                          setState(() {
-                                            isReveal = true;
-                                          })
-                                        })
-                                : InkWell(
-                                    child: Icon(Icons.remove_red_eye_sharp),
-                                    onTap: () => {
-                                      setState(() {
-                                        isReveal = false;
-                                      })
-                                    },
-                                  ),
-                            contentPadding: EdgeInsets.all(8.0),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 1.5),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            filled: true,
-                            hintStyle: TextStyle(color: Colors.grey[800]),
-                            hintText: "Password",
-                            fillColor: Colors.white70),
-                      )),
-                  InkWell(
-                    onTap: () {
-                      Get.toNamed('/reset_password');
-                    },
-                    child: Text('Forgot Password?'),
-                  ),
+                  // Container(
+                  //     padding: EdgeInsets.only(top: 20),
+                  //     child: TextField(
+                  //       controller: _email,
+                  //       decoration: InputDecoration(
+                  //           contentPadding: EdgeInsets.all(8.0),
+                  //           enabledBorder: OutlineInputBorder(
+                  //             borderSide:
+                  //                 BorderSide(color: Colors.grey, width: 1.5),
+                  //             borderRadius: BorderRadius.circular(20.0),
+                  //           ),
+                  //           border: OutlineInputBorder(
+                  //             borderSide: BorderSide(
+                  //                 color: Color(0xff222f3e), width: 5.0),
+                  //             borderRadius: BorderRadius.circular(20.0),
+                  //           ),
+                  //           filled: true,
+                  //           hintStyle: TextStyle(color: Colors.grey[800]),
+                  //           hintText: "Email",
+                  //           fillColor: Colors.white70),
+                  //     )),
+                  // Container(
+                  //     height: 100,
+                  //     padding: EdgeInsets.only(top: 10),
+                  //     child: TextField(
+                  //       obscureText: isReveal,
+                  //       controller: _password,
+                  //       decoration: InputDecoration(
+                  //           suffixIcon: !isReveal
+                  //               ? InkWell(
+                  //                   child: Icon(Icons.remove_red_eye),
+                  //                   onTap: () => {
+                  //                         setState(() {
+                  //                           isReveal = true;
+                  //                         })
+                  //                       })
+                  //               : InkWell(
+                  //                   child: Icon(Icons.remove_red_eye_sharp),
+                  //                   onTap: () => {
+                  //                     setState(() {
+                  //                       isReveal = false;
+                  //                     })
+                  //                   },
+                  //                 ),
+                  //           contentPadding: EdgeInsets.all(8.0),
+                  //           enabledBorder: OutlineInputBorder(
+                  //             borderSide:
+                  //                 BorderSide(color: Colors.grey, width: 1.5),
+                  //             borderRadius: BorderRadius.circular(20.0),
+                  //           ),
+                  //           border: OutlineInputBorder(
+                  //             borderRadius: BorderRadius.circular(20.0),
+                  //           ),
+                  //           filled: true,
+                  //           hintStyle: TextStyle(color: Colors.grey[800]),
+                  //           hintText: "Password",
+                  //           fillColor: Colors.white70),
+                  //     )),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Get.toNamed('/reset_password');
+                  //   },
+                  //   child: Text('Forgot Password?'),
+                  // ),
                   Container(
                     padding: EdgeInsets.only(top: 15),
                     width: 250,
@@ -195,7 +195,7 @@ class _LoginState extends State<Login> {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                           ))),
-                      child: Text('Login'),
+                      child: Text('Get Started'),
                       onPressed: () {
                         Get.toNamed('/home');
                         // Get.toNamed('/video',arguments: [widget.cameras]);

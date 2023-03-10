@@ -11,11 +11,10 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-
-   
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
+
 class Finder extends StatefulWidget {
   const Finder({Key? key}) : super(key: key);
 
@@ -26,61 +25,56 @@ class Finder extends StatefulWidget {
 class _FinderState extends State<Finder> {
   TextEditingController _search = new TextEditingController();
   final List<String> imgList = [
-  'https://img.freepik.com/free-vector/flat-design-international-day-charity-concept_23-2148625885.jpg?t=st=1657249860~exp=1657250460~hmac=593e196e9461ed047aad8898bed5a338954c5fa18c32de5fdc0da827aa8754e5&w=996',
-  'https://img.freepik.com/free-vector/flat-design-international-day-charity-concept_23-2148625885.jpg?t=st=1657249860~exp=1657250460~hmac=593e196e9461ed047aad8898bed5a338954c5fa18c32de5fdc0da827aa8754e5&w=996',
-  'https://img.freepik.com/free-vector/flat-design-international-day-charity-concept_23-2148625885.jpg?t=st=1657249860~exp=1657250460~hmac=593e196e9461ed047aad8898bed5a338954c5fa18c32de5fdc0da827aa8754e5&w=996',
-];
-String _email ='';
-  bool _load =false;
+    'https://img.freepik.com/free-vector/flat-design-international-day-charity-concept_23-2148625885.jpg?t=st=1657249860~exp=1657250460~hmac=593e196e9461ed047aad8898bed5a338954c5fa18c32de5fdc0da827aa8754e5&w=996',
+    'https://img.freepik.com/free-vector/flat-design-international-day-charity-concept_23-2148625885.jpg?t=st=1657249860~exp=1657250460~hmac=593e196e9461ed047aad8898bed5a338954c5fa18c32de5fdc0da827aa8754e5&w=996',
+    'https://img.freepik.com/free-vector/flat-design-international-day-charity-concept_23-2148625885.jpg?t=st=1657249860~exp=1657250460~hmac=593e196e9461ed047aad8898bed5a338954c5fa18c32de5fdc0da827aa8754e5&w=996',
+  ];
+  String _email = '';
+  bool _load = false;
   List data = [];
-    List data_breakfast = [];
-    List data_lunch = [];
-   String category_data = "";
-    List data_dinner = [];
-    List data_recommend = [];
-    bool isLoggedin = false;
-   late String channel ;
-   static String BASE_URL = '' + Global.url + '/product/';
-   List feature = [];
+  List data_breakfast = [];
+  List data_lunch = [];
+  String category_data = "";
+  List data_dinner = [];
+  List data_recommend = [];
+  bool isLoggedin = false;
+  late String channel;
+  static String BASE_URL = '' + Global.url + '/product/';
+  List feature = [];
   Future<String> getData() async {
     _load = true;
     final prefs = await SharedPreferences.getInstance();
-      if(prefs.getBool("isLoggedIn")==null ||prefs.getBool("isLoggedIn")==false  ){
-       isLoggedin = false;
-     }
-     else{
-        isLoggedin =true;
-     }
-      _email = prefs.getString("_email").toString();
-      channel = prefs.getString("_channel").toString();
-      print(channel);
-    setState(() {
-      
-    });
+    if (prefs.getBool("isLoggedIn") == null ||
+        prefs.getBool("isLoggedIn") == false) {
+      isLoggedin = false;
+    } else {
+      isLoggedin = true;
+    }
+    _email = prefs.getString("_email").toString();
+    channel = prefs.getString("_channel").toString();
+    print(channel);
+    setState(() {});
     var _id = prefs.getInt("_id");
-    final response = await http.get(
-        Uri.parse(BASE_URL),
+    final response = await http.get(Uri.parse(BASE_URL),
         headers: {"Content-Type": "application/json"});
-        String jsonsDataString = response.body.toString();
-      final _data = jsonDecode(jsonsDataString);
-      data = data;
-      print(_data);
-        setState(() {
-            try {
-               data = _data;
-              print(data.length);
-              print(response);
-          
-            } finally {
-              _load = false;
-            }
-          });
+    String jsonsDataString = response.body.toString();
+    final _data = jsonDecode(jsonsDataString);
+    data = data;
+    print(_data);
+    setState(() {
+      try {
+        data = _data;
+        print(data.length);
+        print(response);
+      } finally {
+        _load = false;
+      }
+    });
     return "";
   }
 
   @override
   void initState() {
- 
     // // TODO: implement initState
     // super.initState();
     // getData();
@@ -138,46 +132,41 @@ String _email ='';
           ),
         ),
         appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:[
-              Text('Dashboard'),
-              Row(
-                children:[
-                   InkWell(
-                     onTap: (){
-                       Get.toNamed('/profile');
-                     },
-                     child: Icon((Icons.account_circle_outlined)),
-                   ),
-                  Icon((Icons.notifications))
-                ]
-              )
-            ]
-          ),
+          title:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Text('Dashboard'),
+            Row(children: [
+              InkWell(
+                onTap: () {
+                  Get.toNamed('/profile');
+                },
+                child: Icon((Icons.account_circle_outlined)),
+              ),
+              Icon((Icons.notifications))
+            ])
+          ]),
           backgroundColor: Color(0xffef5777),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-       
-                Container(
-                    child: CarouselSlider(
-                  options: CarouselOptions(),
-                  items: imgList
-                      .map((item) => Container(
-                            child: Center(
-                                child: Image.network(item,
-                                    fit: BoxFit.cover, width: 1000)),
-                          ))
-                      .toList(),
-                )),
+              Container(
+                  child: CarouselSlider(
+                options: CarouselOptions(),
+                items: imgList
+                    .map((item) => Container(
+                          child: Center(
+                              child: Image.network(item,
+                                  fit: BoxFit.cover, width: 1000)),
+                        ))
+                    .toList(),
+              )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Card(
-                    elevation: 5,
+                      elevation: 5,
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: InkWell(
@@ -201,7 +190,7 @@ String _email ='';
                             ],
                           ))),
                   Card(
-                    elevation: 5,
+                      elevation: 5,
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: InkWell(
@@ -227,11 +216,10 @@ String _email ='';
                 ],
               ),
               Row(
-             
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Card(
-                       elevation: 5,
+                      elevation: 5,
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: InkWell(
@@ -255,7 +243,7 @@ String _email ='';
                             ],
                           ))),
                   Card(
-                    elevation: 5,
+                      elevation: 5,
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       child: InkWell(
@@ -285,7 +273,6 @@ String _email ='';
         ));
   }
 }
-
 
 class ProductCard extends StatelessWidget {
   const ProductCard(
@@ -330,7 +317,7 @@ class ProductCard extends StatelessWidget {
 }
 
 class NotificationService {
-    void selectNotification(String payload) async {
+  void selectNotification(String payload) async {
     if (payload != null) {
       debugPrint('notification payload: $payload');
     }
@@ -338,54 +325,55 @@ class NotificationService {
     //   context,
     //   MaterialPageRoute<void>(builder: (context) => SecondScreen(payload)),
     // );
-}
-  static final NotificationService _notificationService = NotificationService._internal();
+  }
+
+  static final NotificationService _notificationService =
+      NotificationService._internal();
 
   factory NotificationService() {
     return _notificationService;
   }
 
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   NotificationService._internal();
 
   Future<void> initNotification() async {
     final AndroidInitializationSettings initializationSettingsAndroid =
-    AndroidInitializationSettings('@drawable/ic_launcher');
+        AndroidInitializationSettings('@drawable/ic_launcher');
 
     final IOSInitializationSettings initializationSettingsIOS =
-    IOSInitializationSettings(
+        IOSInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
     );
 
     final InitializationSettings initializationSettings =
-    InitializationSettings(
-      android: initializationSettingsAndroid,
-      iOS: initializationSettingsIOS
-    );
+        InitializationSettings(
+            android: initializationSettingsAndroid,
+            iOS: initializationSettingsIOS);
 
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings,onSelectNotification:  (String? payload) async {
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: (String? payload) async {
       print("okayyyy");
       Get.toNamed('/transaction');
     });
   }
 
-  Future<void> showNotification(int id, String title, String body, int seconds) async {
+  Future<void> showNotification(
+      int id, String title, String body, int seconds) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       id,
       title,
       body,
       tz.TZDateTime.now(tz.local).add(Duration(seconds: seconds)),
       const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'main_channel',
-          'Main Channel',
-          importance: Importance.max,
-          priority: Priority.max,
-          icon: '@drawable/ic_launcher'
-        ),
+        android: AndroidNotificationDetails('main_channel', 'Main Channel',
+            importance: Importance.max,
+            priority: Priority.max,
+            icon: '@drawable/ic_launcher'),
         iOS: IOSNotificationDetails(
           sound: 'default.wav',
           presentAlert: true,
@@ -393,7 +381,8 @@ class NotificationService {
           presentSound: true,
         ),
       ),
-      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
       androidAllowWhileIdle: true,
     );
   }
@@ -401,12 +390,4 @@ class NotificationService {
   Future<void> cancelAllNotifications() async {
     await flutterLocalNotificationsPlugin.cancelAll();
   }
-
 }
-
-
-
-
-
-
-

@@ -195,7 +195,7 @@ String _email ='';
                                 color: Color(0xffef5777),
                               ),
                               Text(
-                                'Join Video Call',
+                                'Recognition',
                                 style: TextStyle(color: Colors.black87),
                               )
                             ],
@@ -238,7 +238,7 @@ String _email ='';
                       child: InkWell(
                           splashColor: Color(0xffef5777),
                           onTap: () {
-                            Get.toNamed('/inventory');
+                            Get.toNamed('/about');
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
